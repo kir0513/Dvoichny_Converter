@@ -21,15 +21,14 @@ public class Dvoichny_Converter {
     public static int toDecimal(String binaryNumber) {
         int decimalNumber = 0;
         if (binaryNumber == null) {
-            return 0;
-        } else if (binaryNumber.equals("")) {
-            return 0;
-        } else {
-            for (int i = 0; i < binaryNumber.length(); i++) {
-                int bin = binaryNumber.charAt(binaryNumber.length() - i - 1);
-                decimalNumber += bin * Math.pow(2, i);
-            }
             return decimalNumber;
         }
+
+        for (int i = 0; i < binaryNumber.length(); i++) {
+            int index = binaryNumber.length() - 1 - i;
+            int value = Character.getNumericValue(binaryNumber.charAt(index));
+            decimalNumber += value * Math.pow(2, i);
+        }
+        return decimalNumber;
     }
 }
